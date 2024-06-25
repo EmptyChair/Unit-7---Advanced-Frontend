@@ -3,53 +3,67 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // local state! variable and method which changes it. If it changes, re-renders what is dependent on it and only that
 // example: Like on Youtube. Like counter goes up, the page remains the same
 const Task = () => {
-    // деструктуризация из массива
-    // картеж/tuple
-    const [isEdit, setIsEdit] = React.useState(false);
-    //isEdit - local state
-    //setIsEdit - метод, за работой которого следит реакт, который изменит локальное состояние
+  // деструктуризация из массива
+  // картеж/tuple
+  const [isEdit, setIsEdit] = React.useState(false);
+  // react hook - все начинаются с use
+  //isEdit - local state
+  //setIsEdit - метод, за работой которого следит реакт, который изменит локальное состояние
 
-    /*
+  /*
     console.log("isEdit "+isEdit);
     setIsEdit(true);
     //нельзя менять стейт напрямую, потому что реакт не будет следить за изменениями
     console.log("isEdit after setIsEdit "+isEdit);
     */
 
-    return <>task</>
+  return <>task</>;
+};
 
-}
+
 
 const TaskState = () => {
-    const [isEdit, setIsEdit] = React.useState(false);
-    /*
+  const [isEdit, setIsEdit] = React.useState(false);
+  //useState(0) is also Okay
+  /*
     console.log("Check3!")
     setIsEdit(false); 
     */
-    if (isEdit) {
-        return (
-            <div>
-                <p>Name</p>
-                <button>Edit</button>
-                <button>Delete</button>
-            </div>
-        );
-    } else {
-        return (
-            <div>
-                <textarea>Name</textarea>
-                <button>Save</button>
-            </div>
-        );    
-    }  
-
+    function changeState() {
+        if (isEdit) {
+            setIsEdit(false);
+        } else {
+            setIsEdit(true);
+        }
+        
+        //setIsEdit(isEdit+1);
+    }
+  if (isEdit) {
+    return (
+      <div>
+        <p>Name</p>
+        <button onClick={changeState}>Edit</button>
+        <button>Delete</button>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <textarea>Name</textarea>
+      <button onClick={changeState}>Save</button>
+    </div>
+  );
 };
 
 root.render(
-    <>
-        <TaskState />
-    </>
+  <>
+    <TaskState />
+  </>
 );
+
+// передача props возможна только от непосредственного родителя к дочернему компоненту.
+// чтобы передавать данные в компонент вниз по цепочке, можно просто передавать от самого родительского родителя вниз по цепочке - дедушка, родитель, дитя
+// Но! это не очень удобно, поскольку мы задействуем очень много компонентов
 
 /*
  Режим просмотра:
