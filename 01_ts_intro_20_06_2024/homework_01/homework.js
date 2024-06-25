@@ -250,7 +250,7 @@ console.log(luckyNumber(651840));
 function banana() {
     var a = 'a';
     var b = 'b';
-    return (b + a + a);
+    return (b + a + (0 / 0) + a);
 }
 console.log("Homework - Task 3");
 //TSC: impossible in TSC, there is no NaN!!!

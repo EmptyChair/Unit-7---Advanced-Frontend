@@ -1,3 +1,5 @@
+// REACT - FUNCTIONAL component
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //functional component script
 //get a reference to the only page element

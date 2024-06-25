@@ -20,7 +20,7 @@ let state2: 'loading' | 'success' | 'error';
 //PRIMITIVE TYPES:
 /*
 - boolean
-- number
+- number (есть неочевидные значения типа +-бесконечность, а вот NaN в Typescript-e не было)
 - string
 - null,
 - undefined

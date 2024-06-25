@@ -294,9 +294,10 @@ console.log(luckyNumber(651840));
 function banana() {
     let a=  'a';
     let b = 'b';  
-    return (b+a+a)    
+    return (b+a+(0/0)+a)    
 }
 
 console.log("Homework - Task 3"); 
 //TSC: impossible in TSC, there is no NaN!!!
 console.log("Function banana writes this word: "+banana())
+
