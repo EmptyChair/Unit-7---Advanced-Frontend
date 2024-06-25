@@ -20,8 +20,6 @@ const Task = () => {
   return <>task</>;
 };
 
-
-
 const TaskState = () => {
   const [isEdit, setIsEdit] = React.useState(false);
   //useState(0) is also Okay
@@ -29,15 +27,15 @@ const TaskState = () => {
     console.log("Check3!")
     setIsEdit(false); 
     */
-    function changeState() {
-        if (isEdit) {
-            setIsEdit(false);
-        } else {
-            setIsEdit(true);
-        }
-        
-        //setIsEdit(isEdit+1);
+  function changeState() {
+    if (isEdit) {
+      setIsEdit(false);
+    } else {
+      setIsEdit(true);
     }
+
+    //setIsEdit(isEdit+1);
+  }
   if (isEdit) {
     return (
       <div>
