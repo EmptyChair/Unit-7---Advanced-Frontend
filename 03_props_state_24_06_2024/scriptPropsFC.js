@@ -3,12 +3,15 @@
 const root = ReactDOM.createRoot(document.getElementById("root"));
 console.log("Functionality test!");
 
-const Student = (props) => {
-  console.log(props);
-  return (
+//Деструктуризация!
+const Student = ({name : studentName, age: studentAge}) => {
+  //console.log(props);
+  //const { name, age } = props;
+  // NOTE! due to functional nature of this script, "this." is no longer applicable
+  return (    
     <>
-      <h1>Name: {props.name}</h1>
-      <h1>Age: {props.age}</h1>
+      <h1>Name: {studentName}</h1>
+      <h1>Age: {studentAge}</h1>
     </>
   );
 };

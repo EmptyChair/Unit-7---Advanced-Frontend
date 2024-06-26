@@ -11,17 +11,45 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const Champion = (props) => {
   return (
     <>
-      <h3>Name: {props.name}</h3>
+      {/*
+    <h3>Name: {props.name}</h3>
       <h3>Inaugurated: {props.start}</h3>
       <h3>Deposed: {props.finish}</h3>
+  */}
+      <h3>Name: {props.name}</h3>
+      <h3>Years: {props.years}</h3>
     </>
   );
 };
 
+const ChampionList = [
+  { name: "Wilhelm Steinitz", years: "1886-1994" },
+  { name: "Emanuel Lasker", years: "1894-1921" },
+  { name: "Jose Raul Capablanca", years: "1921-1927" },
+  { name: "Alexander Alekhine", years: "1927-1935, 1937-1946" },
+  { name: "Max Euwe", years: "1935-1937" },
+  { name: "Mikhail Botvinnik", years: "1948-1957, 1958-1960, 1961-1963" },
+  { name: "Vasily Smyslov", years: "1957-1958" },
+  { name: "Mikhail Tal", years: "1960-1961" },
+  { name: "Tigran V. Petrosian", years: "1963-1969" },
+  { name: "Boris Spassky", years: "1969-1972" },
+  { name: "Bobby Fischer", years: "1972-1975" },
+  { name: "Anatoly Karpov", years: "1975-1985" },
+  { name: "Garry Kasparov", years: "1985-2000" },
+];
+
 //RENDER
+// Champion is used to unpack chmapionslist
 
 root.render(
   <>
+    {ChampionList.map((e) => (
+      <div>
+        <Champion name={e.name} years={e.years} />
+      </div>
+    ))}
+
+    {/*  WITH PROPS
     <h1>WORLD CHESS CHAMPIONS</h1>
     <>--------------</>
     <Champion name="Wilhelm Steinitz " start={1886} finish={1894} />
@@ -35,8 +63,6 @@ root.render(
     <Champion name="Max Euwe " start={1935} finish={1937} />
     <>--------------</>
     <Champion name="Alexander Alekhine " start={1937} finish={1946} />
-    <>--------------</>
-    <Champion name="Mikhail Botvinnik " start={1948} finish={1957} />
     <>--------------</>
     <Champion name="Mikhail Botvinnik " start={1948} finish={1957} />
     <>--------------</>
@@ -54,5 +80,6 @@ root.render(
     <>--------------</>
     <Champion name="Garry Kasparov " start={1985} finish={1993} />
     <>--------------</>
+    */}
   </>
 );

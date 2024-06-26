@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 /////////////////////
 // JSX parts (HTML) hidden inside JS
 
-const Task5 = () => {
+const ToDoList2 = () => {
   const [isEdit, setIsEdit] = React.useState(false);
   const [isName, setIsName] = React.useState("Name Unknown...");
   // Все React инструменты (hook) начинаются с приставки use
@@ -52,7 +52,7 @@ const Task5 = () => {
 
 root.render(
   <>
-    <Task5 />
+    <ToDoList2 />
   </>
 );
 
