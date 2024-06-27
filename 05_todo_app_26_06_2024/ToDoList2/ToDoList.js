@@ -21,22 +21,56 @@ const taskList = [
 const ToDoApp = () => {
   const [isEdit, setIsEdit] = React.useState(false);
   const [isDeleted, setIsDeleted] = React.useState(false);
-  const [isTask, setIsTask] = React.useState("Empty Slot");
-  const textRef = React.useRef();
+  const [isTask, setIsTask] = React.useState("Unknown Task");
+  const [isTaskDate, setIsTaskDate] = React.useState("unknown date");
+  const textRefTask = React.useRef();
+  const textRefDate = React.useRef();
 
-  return isEdit ? (    
+  return isDeleted ? (
+    <div></div>
+  ) : isEdit ? (
     <div>
-      <textarea ref={textRef} defaultValue={isTask}></textarea>
-      <button onClick={() => {setIsEdit(false), setIsTask(textRef.current.value)}}>SAVE</button>
-      <button>DELETE</button>
+      <textarea ref={textRefTask} defaultValue={isTask}></textarea>
+      <textarea ref={textRefDate} defaultValue={isTaskDate}></textarea>
+      <button
+        onClick={() => {
+          setIsEdit(false),
+            setIsTask(textRefTask.current.value),
+            setIsTaskDate(textRefDate.current.value);
+        }}
+      >
+        SAVE
+      </button>
+      <button
+        onClick={() => {
+          setIsDeleted(true);
+        }}
+      >
+        DELETE
+      </button>
     </div>
   ) : (
     <div>
-      <p>{isTask}</p>
-      <button onClick={() =>setIsEdit(true)}>EDIT</button>
-      <button>DELETE</button>
-    </div> 
-  )
+      <p>__________________________________________</p>
+      <p>
+        {isTask}, by {isTaskDate}
+      </p>
+      <button
+        onClick={() => {
+          setIsEdit(true);
+        }}
+      >
+        EDIT
+      </button>
+      <button
+        onClick={() => {
+          setIsDeleted(true);
+        }}
+      >
+        DELETE
+      </button>
+    </div>
+  );
 };
 
 /////////////////////
@@ -45,15 +79,18 @@ const ToDoApp = () => {
 
 root.render(
   <>
-    <ToDoApp key={Math.random()} />
-    <ToDoApp key={Math.random()} />
-    <ToDoApp key={Math.random()} />
-    <ToDoApp key={Math.random()} />
-    <ToDoApp key={Math.random()} />
-    <ToDoApp key={Math.random()} />
-    <ToDoApp key={Math.random()} />
-    <ToDoApp key={Math.random()} />
-    <ToDoApp key={Math.random()} />
-    <ToDoApp key={Math.random()} />
+    <h1>My ToDoApp</h1>
+    <div>
+      <ToDoApp key={Math.random()} />
+      <ToDoApp key={Math.random()} />
+      <ToDoApp key={Math.random()} />
+      <ToDoApp key={Math.random()} />
+      <ToDoApp key={Math.random()} />
+      <ToDoApp key={Math.random()} />
+      <ToDoApp key={Math.random()} />
+      <ToDoApp key={Math.random()} />
+      <ToDoApp key={Math.random()} />
+      <ToDoApp key={Math.random()} />
+    </div>
   </>
 );
