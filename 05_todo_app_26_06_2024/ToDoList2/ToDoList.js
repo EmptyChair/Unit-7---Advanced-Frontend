@@ -1,3 +1,7 @@
+/////////////////////
+//HOMEWORK FOR LESSON 4
+/////////////////////
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 /////////////////////
@@ -21,6 +25,7 @@ const taskList = [
 const ToDoApp = () => {
   const [isEdit, setIsEdit] = React.useState(false);
   const [isDeleted, setIsDeleted] = React.useState(false);
+  const [isDone, setIsDone] = React.useState(false);
   const [isTask, setIsTask] = React.useState("Unknown Task");
   const [isTaskDate, setIsTaskDate] = React.useState("unknown date");
   const textRefTask = React.useRef();
@@ -48,12 +53,13 @@ const ToDoApp = () => {
       >
         DELETE
       </button>
+
     </div>
   ) : (
     <div>
       <p>__________________________________________</p>
       <p>
-        {isTask}, by {isTaskDate}
+        {isTask}, by {isTaskDate}        
       </p>
       <button
         onClick={() => {
@@ -81,6 +87,7 @@ root.render(
   <>
     <h1>My ToDoApp</h1>
     <div>
+      {/* key={Math.random() нужен только при map */}
       <ToDoApp key={Math.random()} />
       <ToDoApp key={Math.random()} />
       <ToDoApp key={Math.random()} />
