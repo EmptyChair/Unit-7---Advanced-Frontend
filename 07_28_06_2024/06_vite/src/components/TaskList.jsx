@@ -14,18 +14,22 @@ const TaskList = () => {
   // for keeping and updating task list
   //
   // const [tasks, setTasks] = useState(["Task 1", "Task 2", "Task 3"]);
+  const [number, setNumber] = useState(4);
   const [tasks, setTasks] = useState([
     {
+      number: 1,
       title: "House Cleaning",
       isComplete: false,
       updatedAt: new Date().toISOString(),
     },
     {
+      number: 2,
       title: "Stairs Cleaning",
       isComplete: false,
       updatedAt: new Date().toISOString(),
     },
     {
+      number: 3,
       title: "Walk - 4,5 km",
       isComplete: false,
       updatedAt: new Date().toISOString(),
@@ -58,8 +62,9 @@ const TaskList = () => {
   const addTask = () => {
     //local state is immutable, so this song and dance!
     if (newTask.title.trim()) {
+      setNumber(number+1);
       const tasksCopy = [...tasks];
-      tasksCopy.push({ ...newTask, updatedAt: new Date().toISOString() });
+      tasksCopy.push({ ...newTask, updatedAt: new Date().toISOString(), number});
       setTasks(tasksCopy);
     }
   };

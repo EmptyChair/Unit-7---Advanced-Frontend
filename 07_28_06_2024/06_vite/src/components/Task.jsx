@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // eslint-disable-next-line react/prop-types
 const Task = ({
-  task: { title, isComplete, updatedAt },
+  task: { number, title, isComplete, updatedAt },
   deleteTask,
   editTask,
   index,
@@ -20,6 +20,7 @@ const Task = ({
   const handleClickSave = () => {
     //setUpdatedTask(textRef.current.value);
     editTask(index, {
+      number,
       title: textRef.current.value,
       isComplete,
       updatedAt: new Date().toISOString(),
@@ -49,6 +50,9 @@ const Task = ({
           </div>
         ) : (
           <div className="d-flex align-items-center">
+            <p>
+              {number}.
+            </p>
             <p
               className={`mb-0 ${
                 isComplete ? "text-decoration-line-through text-muted" : ""
