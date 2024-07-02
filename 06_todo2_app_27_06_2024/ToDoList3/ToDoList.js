@@ -100,8 +100,8 @@ const TaskList = () => {
 
   return (
     <>
-      <h1 class="d-flex justify-content-center align-items-center">
-        Task Manager
+      <h1 class="d-flex justify-content-center align-items-center p-3 mb-2 bg-secondary text-white">
+        Task Manager App
       </h1>
       <div class="d-flex justify-content-center align-items-center mb-3 mt-5">
         {/* onChange waits for changing of value, just like onClick waits for a click, while onInput - when cursor is moved elsewhere */}
@@ -131,9 +131,13 @@ const TaskList = () => {
           </div>
         ))}
       </div>
-      <div class="fixed-bottom mx-3 d-flex justify-content-end">
-        <p class="fw-bold">Author: Roman Sheludko, Group FS-40-2</p>
-      </div>
+      <div class="fixed-bottom mx-3 d-flex justify-content-end ">
+        <p class="fw-bold border border-dark px-3 py-2">
+          <div class ="d-flex justify-content-end">Author: Roman Sheludko, Group FS-40-2</div>
+          <div class ="d-flex justify-content-end">July 2024</div>           
+        </p>
+      </div> 
+     
     </>
   );
 };
@@ -143,7 +147,7 @@ const TaskList = () => {
 /////////////////////
 
 root.render(
-  <>
+  < >
     <TaskList />
   </>
 );
