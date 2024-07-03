@@ -11,8 +11,7 @@ import Task from "./Task.jsx";
 const TaskList = () => {
   // чтобы менять список задач, нужно выбирать между стейтом или массивом
   // мы выбираем локальное состояние, у которого значение - массив
-  // for keeping and updating task list
-
+  // for keeping and updating task list  
   const [number, setNumber] = useState(1);
   const [tasks, setTasks] = useState([]);
   // for adding new tasks
@@ -20,8 +19,12 @@ const TaskList = () => {
     title: "",
     isComplete: false,
   });
+
+  const sortByDate = (array) => {
+    return array.sort((a,b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+  }
   // useEffect launches fetchToDos
-  useEffect(() => {
+  useEffect(() => {    
     const fetchToDos = async () => {
       try {
         // const response = await axios.get("https://jsonplaceholder.typicode.com/todos").data;
@@ -31,23 +34,26 @@ const TaskList = () => {
         );
         const data = await response.json();
         //take elements 10 elements from element 0
-        setTasks(
+        setTasks(sortByDate(
           data
             .splice(0, 10)
             .map((e) => ({
-              number: e.id,
+              //number: e.id,
+              number : e.id,
               title: e.title,
               isComplete: e.completed,
               //* 1000 * 60 * 60 - ms to s to mins to hrs months, to provide variance to current date
-              updatedAt: new Date(Date.now() - Math.random * 1000 * 60 * 60 * 24 * 30).toISOString(),
+              updatedAt: new Date(Date.now() - Math.random() * 1000 * 60 * 60 * 24 * 30).toISOString(),
             }))
-        );
+        ));
       } catch (error) {
         console.log(error);
       }
     };
     fetchToDos();
   }, []);
+
+  
 
   ///NB! slice changes the original
   ///NB! splice makes a copy
@@ -57,12 +63,14 @@ const TaskList = () => {
     if (newTask.title.trim()) {
       setNumber(number + 1);
       const tasksCopy = [...tasks];
-      tasksCopy.push({
+      //unlike push, unshift adds the task to the top (beginning)
+      tasksCopy.unshift({
         ...newTask,
         updatedAt: new Date().toISOString(),
         number,
       });
       setTasks(tasksCopy);
+      setNewTask("");
     }
   };
 
@@ -72,7 +80,10 @@ const TaskList = () => {
   };
 
   const editTask = (i, updatedTask) => {
-    setTasks(tasks.map((e, index) => (index === i ? updatedTask : e)));
+    if (updatedTask.title !== tasks[i].title) {
+      setTasks(sortByDate(tasks.map((e, index) => (index === i ? updatedTask : e))));
+    }
+    
     //maps works with a copy, so we can change the task state
   };
 
@@ -106,8 +117,9 @@ const TaskList = () => {
       <div className="fixed-bottom mx-3 d-flex justify-content-end ">
         <p className="fw-bold border border-dark px-3 py-2">
           <div className="d-flex justify-content-end">
-            Author: Roman Sheludko, Group FS-40-2
+            Author: Roman Sheludko 
           </div>
+          <div className="d-flex justify-content-end">Group FS-40-2</div>
           <div className="d-flex justify-content-end">July 2024</div>
         </p>
       </div>

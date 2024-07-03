@@ -13,12 +13,9 @@ const Task = ({
   index,
 }) => {
   const [isEdit, setIsEdit] = React.useState(false);
-  //const [updatedTask, setUpdatedTask] = React.useState(title);
   const textRef = React.useRef();
-  //const completeRef = React.useRef();
 
   const handleClickSave = () => {
-    //setUpdatedTask(textRef.current.value);
     editTask(index, {
       number,
       title: textRef.current.value,
