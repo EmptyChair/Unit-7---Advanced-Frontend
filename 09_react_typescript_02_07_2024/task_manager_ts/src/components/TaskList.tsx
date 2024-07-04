@@ -105,7 +105,7 @@ const TaskList = () => {
           type="text"
           value={newTask.title}
           onChange={(e) =>
-            setNewTask({ title: e.target.value, isCompleted: false })
+            setNewTask({ title: e.target.value, isComplete: false })
           }
           className="form-control"
           placeholder="New Task"
