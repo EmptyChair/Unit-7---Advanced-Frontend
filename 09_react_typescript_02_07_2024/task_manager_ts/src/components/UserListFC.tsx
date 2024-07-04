@@ -38,7 +38,7 @@ const UserListFC = () => {
         //take elements 5 elements from element 2
         setUsers(sortByName(
           data
-            .splice(2, 5)
+            .splice(0, 10)
             .map((e: { name: string, company: { name: string }, phone: string }) => ({
               name: e.name,
               companyName: e.company.name,
@@ -121,11 +121,11 @@ const UserListFC = () => {
         ))}
       </div>
       <div className="fixed-bottom mx-3 d-flex justify-content-end ">
-        <p className="fw-bold border border-dark px-3 py-2">
+        <div className="fw-bold border border-dark px-3 py-2">
           <div className="d-flex justify-content-end">Author: Roman Sheludko</div>
           <div className="d-flex justify-content-end">Group FS-40-2</div>
           <div className="d-flex justify-content-end">July 2024</div>
-        </p>
+        </div>
       </div>
     </div>
   );
