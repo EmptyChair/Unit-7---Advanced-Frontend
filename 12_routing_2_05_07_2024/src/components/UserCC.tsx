@@ -8,6 +8,8 @@ import {
 } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { IUser } from "./UserListCC";
+//style is a variable invented by us
+import style from "../styles/user.module.css"
 
 /////////////////////
 // USER
@@ -100,9 +102,13 @@ export default class UserCC extends Component<IProps, IState> {
           </div>
         ) : (
           <div className="d-flex justify-content-between">
+            <div>
             <h5 className="card-title">{this.props.user.name}</h5>
             <h6 className="card-subtitle mb-2 text-muted">{this.props.user.company.name}</h6>
-            <p className="card-text">{this.props.user.phone}</p>
+            {/* <p className={`card-text ${style.color}`} >{this.props.user.phone}</p> */}
+            {/* строчка из значения - выйди из jsx и читать. Не забудь пробел! Он важен что конкатенция прошла успешно. */}
+            <p className={"card-text " + style.color} >{this.props.user.phone}</p>
+            </div>
             <div>
             <button
               onClick={this.toggleEdit}
