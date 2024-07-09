@@ -8,16 +8,33 @@ import axios from "axios";
 import UserCC from "./UserCC";
 
 export interface IUser {
-  id: number;
-  name: string;
-  company: { name: string };
-  phone: string;
+  id: number,
+  name: string,
+  userName: string,
+  email: string,
+  address : {
+    street: string,
+    suite: string,
+    city: string,
+    zipcode: string,
+    geo: {
+        lat: number,
+        lng: number
+    },
+  },
+  phone: string,
+  website: string,
+  company: { 
+      name: string, 
+      catchphrase:string, 
+      bs: string 
+  };  
 }
 
 interface IState {
   users: IUser[];
   //newUser: IUser without an id
-  newUser: Omit<IUser, "id">;
+  newUser: Omit<IUser, ("id")>;
   //newName: string,
   //newCompany: string;
   //newPhone: string
@@ -29,16 +46,28 @@ class UserListCC extends Component<Record<string, never>, IState> {
     this.state = {
       users: [],
       newUser: {
+        name: "",
+        userName: "",
+        email: "",
+        address : {
+          street: "",
+          suite: "",
+          city: "",
+          zipcode: "",
+            geo: {
+              lat: 0,
+              lng: 0
+            },
+        },
+        phone:"",
+        website: "",
         company: {
           name: "",
-        },
-        name: "",
-        phone: "",
-      },
-      //newCompany:"",
-      //newName:"",
-      //newPhone:"",
-    };
+          catchphrase: "",
+          bs: ""
+        }
+      } 
+    }
   }
 
   //before rendering (when we load the page) we must make request and then save state
@@ -64,54 +93,57 @@ class UserListCC extends Component<Record<string, never>, IState> {
       users: [
         {
           id: this.state.users.length + 1,
-          company: { name: this.state.newUser.company.name },
           name: this.state.newUser.name,
+          userName: this.state.newUser.userName,
+          email: this.state.newUser.email,
+          address: {
+            street: this.state.newUser.address.street,
+            suite: this.state.newUser.address.suite,
+            city: this.state.newUser.address.city,
+            zipcode: this.state.newUser.address.zipcode,
+            geo : {
+              lat: this.state.newUser.address.geo.lat,
+              lng: this.state.newUser.address.geo.lng,
+            }
+          },
           phone: this.state.newUser.phone,
+          website: this.state.newUser.website,
+          company: {
+             name: this.state.newUser.company.name,
+             catchphrase: this.state.newUser.company.catchphrase,
+             bs: this.state.newUser.company.bs 
+          },         
         },
         ...prevState.users,
       ],
       //wipe new values from the input window
       newUser: {
+        name: "",
+        userName: "",
+        email: "",
+        address : {
+          street: "",
+          suite: "",
+          city: "",
+          zipcode: "",
+            geo: {
+              lat: 0,
+              lng: 0
+            },
+        },
+        phone:"",
+        website:"",
         company: {
           name: "",
-        },
-        name: "",
-        phone: "",
-      },
+          catchphrase: "",
+          bs: ""
+        }
+      }
     })),
     this.setState((prevState) => ({
       users: this.sortByName(prevState.users),
     }));
   };
-
-  // ADD USER with destructured version
-  /*
-    addUser2 = () => {
-        const { length } = this.state.users;
-        const { company : {name: companyName}, name, phone } = this.state.newUser;
-
-        this.setState((prevState) => ({
-            //store new values as a new user and add it to the existing array of users
-            users: [
-                {
-                    id: length + 1,
-                    company: { name: companyName },
-                    name,
-                    phone,
-                },
-                ...prevState.users,
-            ],
-            //wipe new values from the input window
-            newUser: {
-                company: {
-                    name: "",
-                },
-                name: "",
-                phone: "",
-            },
-        }));
-    };
-    */
 
   deleteUser = (userId: number) => {
     this.setState((prevState) => ({
@@ -139,11 +171,14 @@ class UserListCC extends Component<Record<string, never>, IState> {
 
   inputData = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
+    console.log("value is: "+value)
+    console.log("name is: "+value)
     if (name === "companyName") {
       this.setState({
         ...this.state,
-        newUser: { ...this.state.newUser, company: { name: value } },
+        newUser: { ...this.state.newUser, company: { name: value, catchphrase: this.state.newUser.company.catchphrase, bs: this.state.newUser.company.bs } },
       });
+      
       return;
     }
     this.setState({
@@ -159,6 +194,7 @@ class UserListCC extends Component<Record<string, never>, IState> {
     return (
       <div className="container-fluid w-75 mt-4">
         <h1 className="mb-4 text-center text-light bg-dark">User List App</h1>
+        {/* save user */}
         <div className="input-group mb-3">
           <input
             type="text"
@@ -199,7 +235,7 @@ class UserListCC extends Component<Record<string, never>, IState> {
             Add User
           </button>
         </div>
-
+          {/* depict users */}
         <div>
           {this.state.users.map((user) => (
             <UserCC
