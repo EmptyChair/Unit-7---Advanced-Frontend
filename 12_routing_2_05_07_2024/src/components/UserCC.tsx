@@ -67,7 +67,7 @@ export default class UserCC extends Component<IProps, IState> {
   render() {
     return (
       <div
-        className="card mb-3"
+        className="container-fluid w-75 card mb-3"
         style={{ boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
       >
       <div className="card-body">
@@ -99,10 +99,11 @@ export default class UserCC extends Component<IProps, IState> {
             </button>
           </div>
         ) : (
-          <div className="d-flex align-items-center">
+          <div className="d-flex justify-content-between">
             <h5 className="card-title">{this.props.user.name}</h5>
             <h6 className="card-subtitle mb-2 text-muted">{this.props.user.company.name}</h6>
             <p className="card-text">{this.props.user.phone}</p>
+            <div>
             <button
               onClick={this.toggleEdit}
               className="btn btn-warning btn-sm me-2"
@@ -112,6 +113,8 @@ export default class UserCC extends Component<IProps, IState> {
             <button onClick={this.props.deleteUser} className="btn btn-danger btn-sm">
               Del
             </button>
+            </div>
+            
           </div>
         )}
         </div>

@@ -99,7 +99,7 @@ const TaskList = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container-fluid w-75 mt-4">
       <h1 className="mb-4 text-center text-muted bg-secondary">Task List</h1>
       <div className="input-group mb-3">
         <input

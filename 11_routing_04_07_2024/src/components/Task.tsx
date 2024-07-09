@@ -36,7 +36,7 @@ const Task: FunctionComponent<IProps> = ({
 
   return (
     <div
-      className={`card mb-3 ${isComplete ? "bg-light" : ""}`}
+      className={`container-fluid w-75 card mb-3 ${isComplete ? "bg-light" : ""}`}
       style={{ boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
     >
       <div className="card-body">

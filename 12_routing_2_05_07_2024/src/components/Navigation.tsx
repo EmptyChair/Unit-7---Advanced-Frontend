@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Navigation = () => {
     //3. UI of Routing
   return (
-    <div className="fixed-top border border-dark px-3 py-2 col-1 mx-3 my-3 ">
+    <div className="position-absolute col-2 top-50 start-0 border border-dark px-3 py-2 col-1 mx-3 my-3 ">
       <ul className="nav flex-column nav-tabs">
         <h4 className='fw-bold'>Navigation</h4>
         <li className="nav-item">
