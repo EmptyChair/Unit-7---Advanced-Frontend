@@ -6,6 +6,8 @@
 import { Component, ReactNode } from "react";
 import style from "../styles/user.module.css";
 
+//add number
+
 interface IProps {
   user: IExpandedUser;
 }
