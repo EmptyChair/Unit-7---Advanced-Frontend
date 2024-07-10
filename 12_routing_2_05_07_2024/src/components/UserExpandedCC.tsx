@@ -1,7 +1,7 @@
 //////////////////////////
 // USERS LIST
 // USER: name, job, place - take from JASOn placeholder
-/////////////////////////
+//////////////////////////
 
 import { Component, ReactNode } from "react";
 import style from "../styles/user.module.css";
