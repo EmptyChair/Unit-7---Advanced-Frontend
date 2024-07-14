@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import store from './redux/store.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
+  // 4. connect storage
   <Provider store={store}>
     <App />
   </Provider>,

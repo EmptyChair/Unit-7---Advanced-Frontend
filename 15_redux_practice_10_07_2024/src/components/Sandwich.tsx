@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 
 const Sandwich = () => {
-  const sandwich = useSelector((state: RootState) => state.sandwich.ingreds);
+  const sandwich = useSelector((state: RootState) => state.sandwich.ingreds.toString());
   //use dispatch to change global state
   const dispatch = useDispatch();
 
@@ -14,13 +14,17 @@ const Sandwich = () => {
       </h1>
       <div className="w-75 mx-auto align-self-center">
         <h1>Ingredients:</h1>
+        <div className="text-justify px-2 py-2 bg-dark text-white">{sandwich}</div>
+       { /*
         <div className="text-center px-2 py-2 bg-dark text-white">
-          {sandwich.map((ingreds, index) => (
-            <div className="px-2 py-2 bg-dark" key={index}>
-              {ingreds}
+          {sandwich.map((e) => (
+            <div className="px-2 py-2 bg-dark">
+              {e}
             </div>
-          ))}
+          ))
+          }
         </div>
+        */}
 
         <div className="input-group  mb-3">
           {/*Bread*/}

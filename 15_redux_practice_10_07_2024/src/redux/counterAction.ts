@@ -1,3 +1,4 @@
+// 1. Action Typification - method how global state is to be changed
 export type ActionCounter =
 | { type : "counter/minus1", payload: number }
 | { type : "counter/plus1", payload: number }
